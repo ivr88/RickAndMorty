@@ -7,12 +7,11 @@ struct SplashView: View {
             Image("splashImage")
                 .ignoresSafeArea(.all)
             Image("Rick_and_Morty")
-                .frame(alignment: .center)
         }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 withAnimation {
-                    self.isActive = true
+                    isActive = true
                 }
             }
         }
@@ -20,5 +19,6 @@ struct SplashView: View {
 }
 
 #Preview {
-    SplashView(isActive: .constant(true))
+    @Previewable @State var isActive = false 
+    SplashView(isActive: $isActive)
 }
