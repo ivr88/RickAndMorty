@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  RickAndMorty
-//
-//  Created by Вадим Исламов on 12.10.2024.
-//
-
 import SwiftUI
 
 struct ContentView: View {
