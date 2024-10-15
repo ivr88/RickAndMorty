@@ -1,4 +1,4 @@
-import Foundation
+import SwiftUI
 
 // MARK: - ListModel
 
@@ -34,3 +34,15 @@ enum Status: String, Codable {
     case unknown = "unknown"
 }
 
+extension Result {
+    var statusColor: Color {
+        switch status.rawValue {
+        case "Alive":
+            return Color(UIColor(named: "#198737") ?? .white)
+        case "Dead":
+            return Color(UIColor(named: "#D62300") ?? .white)
+        default:
+            return Color(UIColor(named: "#686874") ?? .white)
+        }
+    }
+}
