@@ -14,15 +14,19 @@ struct ContentView: View {
                         .clipShape(.rect(cornerRadius: 10))
                 }
                     
-                VStack (alignment: .leading) {
+                VStack (alignment: .leading, spacing: 6) {
                     Text (character.name)
+                        .font(.custom("IBMPlexSans-Medium", size: 18))
                     HStack {
                         Text(character.status.rawValue)
                             .foregroundStyle(Color(character.statusColor))
                         Text("•")
                         Text(character.species.rawValue)
                     }
+                    .font(.custom("IBMPlexSans-SemiBold", size: 12))
+                    
                     Text(character.gender.rawValue)
+                        .font(.custom("IBMPlexSans-Regular", size: 12))
                 }
             }
         }
