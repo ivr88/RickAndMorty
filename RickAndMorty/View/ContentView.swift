@@ -56,6 +56,3 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
-}

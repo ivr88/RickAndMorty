@@ -17,8 +17,3 @@ struct SplashView: View {
         }
     }
 }
-
-#Preview {
-    @Previewable @State var isActive = false 
-    SplashView(isActive: $isActive)
-}
