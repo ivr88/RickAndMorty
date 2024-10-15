@@ -18,6 +18,7 @@ struct ContentView: View {
                     Text (character.name)
                     HStack {
                         Text(character.status.rawValue)
+                            .foregroundStyle(Color(character.statusColor))
                         Text("•")
                         Text(character.species.rawValue)
                     }
