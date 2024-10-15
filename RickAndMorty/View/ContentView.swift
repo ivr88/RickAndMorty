@@ -35,10 +35,23 @@ struct ContentView: View {
                         }
                     }
                 }
+                .listRowBackground(Color(UIColor(named: "#151517") ?? .white))
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        Text("Rick & Morty Characters")
+                            .font(.custom("IBMPlexSans-Bold", size: 24))
+                    }
+                }
+                .toolbarBackground(.black, for: .navigationBar)
             }
-            .onAppear {
-                listViewModel.fetchCharacters()
-            }
+            .scrollContentBackground(.hidden)
+            .background(.black)
+            .listRowSpacing(4)
+            .scrollIndicators(.hidden)
+        }
+        .foregroundStyle(.white)
+        .onAppear {
+            listViewModel.fetchCharacters()
         }
     }
 }
