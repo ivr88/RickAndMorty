@@ -6,8 +6,4 @@ class RowViewModel: ObservableObject {
     init(character: Result) {
         self.character = character
     }
-
-    var statusColor: Color {
-        Color(character.statusColor)
-    }
 }
