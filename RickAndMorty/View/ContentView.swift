@@ -49,6 +49,7 @@ struct ContentView: View {
             .listRowSpacing(4)
             .scrollIndicators(.hidden)
         }
+        .tint(.white)
         .foregroundStyle(.white)
         .onAppear {
             listViewModel.fetchCharacters()
