@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ContentView: View {
+struct ListView: View {
     
     @ObservedObject var listViewModel = ListViewModel()
     

@@ -6,7 +6,7 @@ struct CoordinatorView: View {
     
     var body: some View {
         if isActive {
-            ContentView()
+            ListView()
         } else {
             SplashView(isActive: $isActive)
         }
