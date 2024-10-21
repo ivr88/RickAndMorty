@@ -2,31 +2,29 @@ import SwiftUI
 
 struct RowView: View {
     
-    @ObservedObject var row: RowViewModel
+    @ObservedObject var row: CharacterViewModel
     
     var body: some View {
         HStack {
-            if let image = URL(string: row.character.image) {
-                AsyncImage(url: image) { image in
-                    image.image?
-                        .resizable()
-                        .frame(width: 84, height: 64)
-                        .clipShape(.rect(cornerRadius: 10))
-                }
+            AsyncImage(url: row.image) { image in
+                image.image?
+                    .resizable()
+                    .frame(width: 84, height: 64)
+                    .clipShape(.rect(cornerRadius: 10))
             }
             
             VStack (alignment: .leading, spacing: 6) {
-                Text (row.character.name)
+                Text (row.name)
                     .font(.custom("IBMPlexSans-Medium", size: 18))
                 HStack {
-                    Text(row.character.status.rawValue)
-                        .foregroundStyle(Color(row.character.statusColor))
+                    Text(row.status)
+                        .foregroundStyle(Color(row.statusColor))
                     Text("•")
-                    Text(row.character.species.rawValue)
+                    Text(row.species)
                 }
                 .font(.custom("IBMPlexSans-SemiBold", size: 12))
                 
-                Text(row.character.gender.rawValue)
+                Text(row.gender)
                     .font(.custom("IBMPlexSans-Regular", size: 12))
             }
         }
