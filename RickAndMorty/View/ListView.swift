@@ -8,10 +8,10 @@ struct ListView: View {
         NavigationStack {
             List (listViewModel.characters, id: \.id) { character in
                 NavigationLink {
-                    DetailView()
+                    DetailView(detail: CharacterViewModel(character: character))
                         .toolbarRole(.editor)
                 } label: {
-                    RowView(row: RowViewModel(character: character))
+                    RowView(row: CharacterViewModel(character: character))
                 }
                 .listRowBackground(Color(UIColor(named: "#151517") ?? .white))
                 .toolbar {
