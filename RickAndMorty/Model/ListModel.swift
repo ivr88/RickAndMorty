@@ -14,35 +14,32 @@ struct Result: Codable {
     let status: Status
     let species: Species
     let gender: Gender
+    let location: Location
     let image: String
+    let episode: [String]
 }
 
+// MARK: - Gender
 enum Gender: String, Codable {
     case female = "Female"
     case male = "Male"
     case unknown = "unknown"
 }
 
+// MARK: - Location
+struct Location: Codable {
+    let name: String
+}
+
+// MARK: - Species
 enum Species: String, Codable {
     case alien = "Alien"
     case human = "Human"
 }
 
+// MARK: - Status
 enum Status: String, Codable {
     case alive = "Alive"
     case dead = "Dead"
     case unknown = "unknown"
-}
-
-extension Result {
-    var statusColor: Color {
-        switch status.rawValue {
-        case "Alive":
-            return Color(UIColor(named: "#198737") ?? .white)
-        case "Dead":
-            return Color(UIColor(named: "#D62300") ?? .white)
-        default:
-            return Color(UIColor(named: "#686874") ?? .white)
-        }
-    }
 }
