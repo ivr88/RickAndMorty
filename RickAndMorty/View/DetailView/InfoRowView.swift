@@ -7,10 +7,10 @@ struct InfoRowView: View {
     var body: some View {
         HStack {
             Text(title)
-                .font(.custom("IBMPlexSans-SemiBold", size: 16))
+                .font(.customFontSemiBold(size: 16))
             ScrollView(.horizontal) {
                 Text(value)
-                    .font(.custom("IBMPlexSans-Regular", size: 16))
+                    .font(.customFontRegular(size: 16))
             }
             .scrollIndicators(.hidden)
         }
