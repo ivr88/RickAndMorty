@@ -17,7 +17,7 @@ struct ListView: View {
                 .toolbar {
                     ToolbarItem(placement: .principal) {
                         Text("Rick & Morty Characters")
-                            .font(.custom("IBMPlexSans-Bold", size: 24))
+                            .font(.customFontBold(size: 24))
                     }
                 }
                 .toolbarBackground(.black, for: .navigationBar)
