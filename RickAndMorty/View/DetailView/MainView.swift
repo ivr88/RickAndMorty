@@ -12,7 +12,7 @@ struct MainView: View {
             CharacterInfoView(characterViewModel: characterViewModel)
         }
         .padding(16)
-        .background(Color(UIColor(named: "#151517") ?? .white))
+        .background(Color.customBlack)
         .clipShape(RoundedRectangle(cornerRadius: 24))
         .toolbar {
             ToolbarItem(placement: .principal) {
