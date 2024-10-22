@@ -17,7 +17,7 @@ struct MainView: View {
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text(characterViewModel.name)
-                    .font(.custom("IBMPlexSans-Bold", size: 24))
+                    .font(.customFontBold(size: 24))
             }
         }
         Spacer()
