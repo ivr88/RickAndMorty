@@ -5,6 +5,6 @@ struct GenderView: View {
     
     var body: some View {
         Text(gender)
-            .font(.custom("IBMPlexSans-Regular", size: 12))
+            .font(.customFontRegular(size: 12))
     }
 }
