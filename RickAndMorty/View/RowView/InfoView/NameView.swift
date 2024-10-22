@@ -5,6 +5,6 @@ struct NameView: View {
     
     var body: some View {
         Text (name)
-            .font(.custom("IBMPlexSans-Medium", size: 18))
+            .font(.customFontMedium(size: 18))
     }
 }
