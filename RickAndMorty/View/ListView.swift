@@ -13,7 +13,7 @@ struct ListView: View {
                 } label: {
                     RowView(row: CharacterViewModel(character: character))
                 }
-                .listRowBackground(Color(UIColor(named: "#151517") ?? .white))
+                .listRowBackground(Color.customBlack)
                 .toolbar {
                     ToolbarItem(placement: .principal) {
                         Text("Rick & Morty Characters")
