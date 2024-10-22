@@ -23,7 +23,7 @@ class CharacterViewModel: ObservableObject {
         case .dead:
             return Color(UIColor(named: "#D62300") ?? .white)
         default:
-            return Color(UIColor(named: "#D62300") ?? .white)
+            return Color(UIColor(named: "#686874") ?? .white)
         }
     }
     
