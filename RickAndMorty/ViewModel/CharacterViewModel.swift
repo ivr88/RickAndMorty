@@ -19,11 +19,11 @@ class CharacterViewModel: ObservableObject {
     var statusColor: Color {
         switch character.status {
         case .alive:
-            return Color(UIColor(named: "#198737") ?? .white)
+            return Color.customGreen
         case .dead:
-            return Color(UIColor(named: "#D62300") ?? .white)
+            return Color.customRed
         default:
-            return Color(UIColor(named: "#686874") ?? .white)
+            return Color.customDarkGray
         }
     }
     
