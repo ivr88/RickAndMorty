@@ -12,6 +12,6 @@ struct StatusSpeciesView: View {
             
             SpeciesView(species: character.species)
         }
-        .font(.custom("IBMPlexSans-SemiBold", size: 12))
+        .font(.customFontRegular(size: 12))
     }
 }
