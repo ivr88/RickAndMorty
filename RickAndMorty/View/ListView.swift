@@ -2,16 +2,16 @@ import SwiftUI
 
 struct ListView: View {
     
-    @ObservedObject var listViewModel = ListViewModel()
+    @Bindable var listViewModel: ListViewModel
     
     var body: some View {
         NavigationStack {
-            List (listViewModel.characters, id: \.id) { character in
+            List (listViewModel.results, id: \.id) { result in
                 NavigationLink {
-                    DetailView(detail: CharacterViewModel(character: character))
+                    DetailView(detail: CharacterViewModel(character: result))
                         .toolbarRole(.editor)
                 } label: {
-                    RowView(row: CharacterViewModel(character: character))
+                    RowView(row: CharacterViewModel(character: result))
                 }
                 .listRowBackground(Color.customBlack)
                 .toolbar {
@@ -29,8 +29,8 @@ struct ListView: View {
         }
         .tint(.white)
         .foregroundStyle(.white)
-        .onAppear {
-            listViewModel.fetchCharacters()
+        .task {
+            await listViewModel.fetchCharacters()
         }
     }
 }

@@ -1,16 +1,41 @@
 import SwiftUI
 
-final class ListViewModel: ObservableObject {
+@Observable
+final class ListViewModel {
     
-    @Published var characters: [Result] = []
-        
-    private let apiService = APIService()
+    enum State: Equatable {
+        case loading
+        case empty
+        case content
+        case error(String)
+    }
     
-    func fetchCharacters() {
-        apiService.fetch()
+    var results: [Result] = []
+    var state: State = .loading
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
-            self?.characters = self?.apiService.result ?? []
+    private let apiService: APIServiceProtocol
+    
+    init(apiService: APIServiceProtocol) {
+        self.apiService = apiService
+    }
+    
+    func fetchCharacters() async {
+        do {
+            results = try await apiService.obtainsCharacters()
+            state = results.isEmpty ? .empty : .content
+        }
+        
+        catch NetworkError.decodingFailed {
+            results = []
+            state = .error("Failed to decode users")
+        }
+        catch let NetworkError.badStatusCode(code) {
+            results = []
+            state = .error("Server error \(code)")
+        }
+        catch {
+            results = []
+            state = .error("Unexpected error")
         }
     }
 }

@@ -1,14 +1,12 @@
 import SwiftUI
 
 // MARK: - ListModel
-
-struct ListModel: Codable {
+struct Character: Codable {
     let results: [Result]
 }
 
 // MARK: - Result
-
-struct Result: Codable {
+struct Result: Identifiable, Codable {
     let id: Int
     let name: String
     let status: Status

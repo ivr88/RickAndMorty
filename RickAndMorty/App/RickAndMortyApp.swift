@@ -2,7 +2,8 @@ import SwiftUI
 
 @main
 struct RickAndMortyApp: App {
-    @StateObject private var networkManager = NetworkMonitor()
+    @StateObject var networkManager = NetworkMonitor()
+    
     
     var body: some Scene {
         WindowGroup {
