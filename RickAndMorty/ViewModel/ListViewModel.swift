@@ -1,5 +1,6 @@
 import SwiftUI
 
+@MainActor
 @Observable
 final class ListViewModel {
     
@@ -23,19 +24,25 @@ final class ListViewModel {
         do {
             results = try await apiService.obtainsCharacters()
             state = results.isEmpty ? .empty : .content
-        }
-        
-        catch NetworkError.decodingFailed {
-            results = []
-            state = .error("Failed to decode users")
-        }
-        catch let NetworkError.badStatusCode(code) {
-            results = []
-            state = .error("Server error \(code)")
-        }
-        catch {
-            results = []
+        } catch  let error as NetworkError {
+            handleError(error)
+        } catch {
             state = .error("Unexpected error")
         }
     }
+    
+    private func handleError(_ error: NetworkError) {
+        switch error {
+        case .decodingFailed:
+            state = .error("Decoding error")
+        case .badStatusCode(let code):
+            state = .error("Server error \(code)")
+        case .invalidURL:
+            state = .error("Wrong URL")
+        case .invalidResponse:
+            state = .error("No response from the server")
+        }
+    }
 }
+
+
