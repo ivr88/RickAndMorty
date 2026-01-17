@@ -3,15 +3,31 @@ import SwiftUI
 struct ListView: View {
     
     @Bindable var listViewModel: ListViewModel
+    @State private var isActive = false
     
     var body: some View {
         NavigationStack {
-            List (listViewModel.results, id: \.id) { result in
+            content
+        }
+        .tint(.white)
+        .foregroundStyle(.white)
+        .task {
+            await listViewModel.fetchCharacters()
+        }
+    }
+    
+    @ViewBuilder
+    private var content: some View {
+        switch listViewModel.state {
+        case .screenSave:
+            ScreenSaveView()
+        case .content:
+            List (listViewModel.results) { character in
                 NavigationLink {
-                    DetailView(detail: CharacterViewModel(character: result))
+                    DetailView(character: CharacterViewModel(character: character))
                         .toolbarRole(.editor)
                 } label: {
-                    RowView(row: CharacterViewModel(character: result))
+                    RowView(character: CharacterViewModel(character: character))
                 }
                 .listRowBackground(Color.customBlack)
                 .toolbar {
@@ -26,12 +42,11 @@ struct ListView: View {
             .background(.black)
             .listRowSpacing(4)
             .scrollIndicators(.hidden)
-        }
-        .tint(.white)
-        .foregroundStyle(.white)
-        .task {
-            await listViewModel.fetchCharacters()
+        case .error (let message):
+            ErrorView(message: message)
         }
     }
 }
+
+
 

@@ -2,14 +2,14 @@ import SwiftUI
 
 struct DetailView: View {
     
-    @ObservedObject var detail: CharacterViewModel
+    @Bindable var character: CharacterViewModel
 
     var body: some View {
         Color.black
             .ignoresSafeArea()
             .overlay(
                 VStack {
-                    MainView(characterViewModel: detail)
+                    ContainerView(character: character)
                 }
                 .padding(.horizontal, 20)
             )

@@ -1,23 +1,25 @@
 import SwiftUI
 
-class CharacterViewModel: ObservableObject {
+@MainActor
+@Observable
+class CharacterViewModel {
     
-    private let character: Result
+    private let result: Result
     
     init(character: Result) {
-        self.character = character
+        self.result = character
     }
     
     var name: String {
-        character.name
+        result.name
     }
     
     var status: String {
-        character.status.rawValue
+        result.status.rawValue
     }
     
     var statusColor: Color {
-        switch character.status {
+        switch result.status {
         case .alive:
             return Color.customGreen
         case .dead:
@@ -28,19 +30,19 @@ class CharacterViewModel: ObservableObject {
     }
     
     var species: String {
-        character.species.rawValue
+        result.species.rawValue
     }
     
     var gender: String {
-        character.gender.rawValue
+        result.gender.rawValue
     }
     
     var image: URL? {
-        URL(string: character.image)
+        URL(string: result.image)
     }
     
     var episodes: String {
-        character.episode.compactMap { url -> String? in
+        result.episode.compactMap { url -> String? in
             if let id = url.split(separator: "/").last {
                 return String(id)
             }
@@ -49,6 +51,6 @@ class CharacterViewModel: ObservableObject {
     }
     
     var location: String {
-        character.location.name
+        result.location.name
     }
 }

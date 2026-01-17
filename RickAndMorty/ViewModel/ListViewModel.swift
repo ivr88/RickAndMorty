@@ -5,14 +5,13 @@ import SwiftUI
 final class ListViewModel {
     
     enum State: Equatable {
-        case loading
-        case empty
+        case screenSave
         case content
         case error(String)
     }
     
     var results: [Result] = []
-    var state: State = .loading
+    var state: State = .screenSave
         
     private let apiService: APIServiceProtocol
     
@@ -21,10 +20,12 @@ final class ListViewModel {
     }
     
     func fetchCharacters() async {
+        try? await Task.sleep(for: .seconds(3))
         do {
             results = try await apiService.obtainsCharacters()
-            state = results.isEmpty ? .empty : .content
-        } catch  let error as NetworkError {
+            state = .content
+        } catch let error as NetworkError {
+            results = []
             handleError(error)
         } catch {
             state = .error("Unexpected error")

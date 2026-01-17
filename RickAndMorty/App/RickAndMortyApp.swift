@@ -2,12 +2,12 @@ import SwiftUI
 
 @main
 struct RickAndMortyApp: App {
-    @StateObject var networkManager = NetworkMonitor()
-    
+    @State var networkManager = NetworkMonitor()
+    @State private var viewModel = ListViewModel(apiService: APIService())
     
     var body: some Scene {
         WindowGroup {
-            CoordinatorView()
+            ListView(listViewModel: viewModel)
                 .environmentObject(networkManager)
         }
     }

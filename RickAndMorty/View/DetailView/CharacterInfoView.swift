@@ -1,14 +1,24 @@
 import SwiftUI
 
 struct CharacterInfoView: View {
-    var characterViewModel: CharacterViewModel
+    var character: CharacterViewModel
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            InfoRowView(title: "Species:", value: characterViewModel.species)
-            InfoRowView(title: "Gender:", value: characterViewModel.gender)
-            InfoRowView(title: "Episodes:", value: characterViewModel.episodes)
-            InfoRowView(title: "Last known location:", value: characterViewModel.location)
+            InfoRowView(title: "Species:",
+                        value: character.species)
+            .scrollDisabled(true)
+            
+            InfoRowView(title: "Gender:",
+                        value: character.gender)
+            .scrollDisabled(true)
+            
+            InfoRowView(title: "Episodes:",
+                        value: character.episodes)
+            
+            InfoRowView(title: "Last known location:",
+                        value: character.location)
+            .scrollDisabled(true)
         }
     }
 }

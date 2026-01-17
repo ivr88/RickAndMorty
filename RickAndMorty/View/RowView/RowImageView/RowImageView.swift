@@ -8,7 +8,7 @@ struct RowImageView: View {
             image.image?
                 .resizable()
                 .frame(width: 84, height: 64)
-                .clipShape(.rect(cornerRadius: 10))
+                .clipShape(RoundedRectangle(cornerRadius: 10))
         }
     }
 }

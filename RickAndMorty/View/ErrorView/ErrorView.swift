@@ -2,9 +2,11 @@ import SwiftUI
 
 struct ErrorView: View {
     
-    @ObservedObject private var networkManager = NetworkMonitor()
+    @Bindable private var networkManager = NetworkMonitor()
     
     @State private var showAlert = false
+    
+    let message: String
     
     var body: some View {
         ZStack {
@@ -39,9 +41,13 @@ struct ErrorView: View {
             .foregroundStyle(.white)
             .alert(isPresented: $showAlert) {
             if networkManager.isConnected {
-                return Alert(title: Text("Success!"), message: Text("The network request can be performed"), dismissButton: .default(Text("OK")))
+                return Alert(title: Text("Success!"),
+                             message: Text("The network request can be performed"),
+                             dismissButton: .default(Text("OK")))
                 }
-                return Alert(title: Text("No internet connection"), message: Text("Please, enable wi-fi or Celluar data"), dismissButton: .default(Text("Cancel")))
+                return Alert(title: Text("No internet connection"),
+                             message: Text("Please, enable wi-fi or Celluar data"),
+                             dismissButton: .default(Text("Cancel")))
             }
         }
     }

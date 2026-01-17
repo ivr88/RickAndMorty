@@ -1,13 +1,14 @@
 import Foundation
 import Network
 
+@Observable
 class NetworkMonitor: ObservableObject {
     
     private let monitor = NWPathMonitor()
     
     private let queue = DispatchQueue(label: "Monitor")
     
-    @Published var isConnected = true
+    var isConnected = true
     
     init() {
         monitor.pathUpdateHandler = { path in

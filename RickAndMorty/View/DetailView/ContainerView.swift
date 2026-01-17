@@ -1,22 +1,23 @@
 import SwiftUI
 
-struct MainView: View {
-    var characterViewModel: CharacterViewModel
+struct ContainerView: View {
+    var character: CharacterViewModel
     
     var body: some View {
         VStack (alignment: .leading, spacing: 20) {
-            CharacterImageView(image: characterViewModel.image)
+            CharacterImageView(image: character.image)
             
-            CharacterStatusView(status: characterViewModel.status, statusColor: characterViewModel.statusColor)
+            CharacterStatusView(status: character.status,
+                                statusColor: character.statusColor)
             
-            CharacterInfoView(characterViewModel: characterViewModel)
+            CharacterInfoView(character: character)
         }
         .padding(16)
         .background(Color.customBlack)
         .clipShape(RoundedRectangle(cornerRadius: 24))
         .toolbar {
             ToolbarItem(placement: .principal) {
-                Text(characterViewModel.name)
+                Text(character.name)
                     .font(.customFontBold(size: 24))
             }
         }
