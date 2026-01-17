@@ -11,7 +11,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		1CDDC6AE2CBAD7020027A482 /* RickAndMorty */ = {
+		1C0A5AE82F1BCD3600FD8EA1 /* RickAndMorty */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = RickAndMorty;
 			sourceTree = "<group>";
@@ -32,7 +32,7 @@
 		1CDDC6A32CBAD7020027A482 = {
 			isa = PBXGroup;
 			children = (
-				1CDDC6AE2CBAD7020027A482 /* RickAndMorty */,
+				1C0A5AE82F1BCD3600FD8EA1 /* RickAndMorty */,
 				1CDDC6AD2CBAD7020027A482 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,7 +61,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				1CDDC6AE2CBAD7020027A482 /* RickAndMorty */,
+				1C0A5AE82F1BCD3600FD8EA1 /* RickAndMorty */,
 			);
 			name = RickAndMorty;
 			packageProductDependencies = (

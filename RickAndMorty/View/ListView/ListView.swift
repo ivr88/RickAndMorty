@@ -38,6 +38,9 @@ struct ListView: View {
                 }
                 .toolbarBackground(.black, for: .navigationBar)
             }
+            .refreshable { 
+                await listViewModel.fetchCharacters()
+            }
             .scrollContentBackground(.hidden)
             .background(.black)
             .listRowSpacing(4)
